@@ -74,6 +74,51 @@ std::vector< uint8_t > XInt::Subtract( const std::vector< uint8_t > & num1, cons
 	return res;
 }
 
+std::vector< uint8_t > XInt::Multiply( const std::vector< uint8_t > & num1, const std::vector< uint8_t > & num2 )
+{
+	auto first = num1.size() >= num2.size() ? num1 : num2;
+	auto second = num1.size() < num2.size() ? num1 : num2;
+
+	std::vector< uint8_t > finalres, temp;
+	std::vector< std::vector< uint8_t > > results;
+
+	uint8_t carry = 0;
+
+	for( int i = 0; i < second.size(); ++i ) {
+		temp.clear();
+		for( int p = 0; p < i; ++p )
+			temp.push_back( 0 );
+
+		if( second[ i ] == 0 ) {
+			results.push_back( temp );
+			continue;
+		}
+
+		for( int j = 0; j < first.size(); ++j ) {
+			temp.push_back( second[ i ] * first[ j ] + carry );
+
+			carry = temp[ j ] / 10;
+			temp[ j ] %= 10;
+		}
+		while( carry > 0 ) {
+			temp.push_back( carry % 10 );
+			carry /= 10;
+		}
+
+		results.push_back( temp );
+	}
+
+	if( results.empty() )
+		return finalres;
+
+	finalres = results[ 0 ];
+
+	for( auto it = results.begin() + 1; it != results.end(); ++it )
+		finalres = Add( finalres, * it );
+
+	return finalres;
+}
+
 std::vector< uint8_t > XInt::Increment( const std::vector< uint8_t > & num )
 {
 	return Add( num, { 1 } );

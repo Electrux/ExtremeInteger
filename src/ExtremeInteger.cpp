@@ -1,12 +1,15 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <cctype>
 #include <algorithm>
 
 #include "../include/ExtremeInteger.hpp"
 
-////////////////////////// PRIVATE /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+////////////////////////////// PRIVATE ///////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+////////////////////////// NUMBER VALIDATION /////////////////////////////
 
 bool XInt::IsValidNumber( const std::string & num )
 {
@@ -28,6 +31,8 @@ bool XInt::IsValidNumber( const std::vector< uint8_t > & num )
 	return true;
 }
 
+//////////////////////// STRING/VECTOR REVERSAL //////////////////////////
+
 std::vector< uint8_t > XInt::ToReverseVector( const std::string & num )
 {
 	std::vector< uint8_t > temp;
@@ -47,7 +52,11 @@ std::string XInt::ToReverseString( const std::vector< uint8_t > & num )
 	return temp;
 }
 
-////////////////////////// PUBLIC ////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+/////////////////////////////// PUBLIC ///////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+////////////////////////// CONSTRUCTORS //////////////////////////////////
 
 XInt::XInt()
 {
@@ -81,6 +90,8 @@ XInt::XInt( const std::vector< uint8_t > & digits )
 	}
 }
 
+//////////////////////// BASIC OPERATORS /////////////////////////////////
+
 XInt XInt::operator +( const XInt & num2 )
 {
 	return Add( this->number, num2.number );
@@ -90,6 +101,13 @@ XInt XInt::operator -( const XInt & num2 )
 {
 	return Subtract( this->number, num2.number );
 }
+
+XInt XInt::operator *( const XInt & num2 )
+{
+	return Multiply( this->number, num2.number );
+}
+
+//////////////////////// INCREMENT/DECREMENT OPERATORS ///////////////////
 
 XInt & XInt::operator ++()
 {
@@ -120,6 +138,8 @@ XInt XInt::operator --( int )
 
 	return temp;
 }
+
+////////////////////// I/O OPERATOR OVERLOADS ////////////////////////////
 
 std::ostream & operator <<( std::ostream & os, const XInt & exint )
 {

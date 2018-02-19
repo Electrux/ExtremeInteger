@@ -5,10 +5,10 @@
 
 int main()
 {
-	XInt n1( "131" );
-	XInt n2( "32" );
+	XInt n1( "5" );
+	XInt n2( "6" );
 
-	std::cout << n1 - n2 << std::endl;
+	std::cout << n1 * n2 << std::endl;
 
 	return 0;
 }

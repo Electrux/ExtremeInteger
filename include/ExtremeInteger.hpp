@@ -19,6 +19,8 @@ class XInt
 	// Extreme Mathematics, all vectors are reverse.
 	static std::vector< uint8_t > Add( const std::vector< uint8_t > & num1, const std::vector< uint8_t > & num2 );
 	static std::vector< uint8_t > Subtract( const std::vector< uint8_t > & num1, const std::vector< uint8_t > & num2 );
+	static std::vector< uint8_t > Multiply( const std::vector< uint8_t > & num1, const std::vector< uint8_t > & num2 );
+
 	static std::vector< uint8_t > Increment( const std::vector< uint8_t > & num );
 	static std::vector< uint8_t > Decrement( const std::vector< uint8_t > & num );
 
@@ -33,6 +35,7 @@ public:
 
 	XInt operator +( const XInt & num2 );
 	XInt operator -( const XInt & num2 );
+	XInt operator *( const XInt & num2 );
 
 	XInt & operator ++();
 	XInt operator ++( int );
