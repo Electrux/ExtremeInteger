@@ -28,10 +28,10 @@ public:
 
 	XInt();
 
-	XInt( const XInt & num );
-	XInt( const std::string & num );
-	XInt( const int & num );
-	XInt( const std::vector< uint8_t > & digits );
+	explicit XInt( const XInt & num );
+	explicit XInt( const std::string & num );
+	explicit XInt( const int & num );
+	explicit XInt( const std::vector< uint8_t > & digits );
 
 	XInt operator +( const XInt & num2 );
 	XInt operator -( const XInt & num2 );

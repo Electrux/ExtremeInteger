@@ -41,12 +41,10 @@ std::vector< uint8_t > XInt::Subtract( const std::vector< uint8_t > & num1, cons
 	std::vector< uint8_t > res;
 
 	bool borrow = false;
-	uint8_t tosub;
-	int8_t temp;
 
 	for( int i = 0; i < first.size(); ++i ) {
-		tosub = i >= second.size() ? 0 : second[ i ];
-		temp = first[ i ] - tosub - ( uint8_t )borrow;
+		uint8_t tosub = i >= second.size() ? 0 : second[ i ];
+		int8_t temp = first[ i ] - tosub - ( uint8_t )borrow;
 
 		if( temp < 0 ) {
 			borrow = true;

@@ -63,10 +63,8 @@ XInt::XInt()
 	this->number.push_back( 0 );
 }
 
-XInt::XInt( const XInt & num )
-{
-	this->number = num.number;
-}
+XInt::XInt( const XInt & num ) : number( num.number )
+{}
 
 XInt::XInt( const std::string & num )
 {
